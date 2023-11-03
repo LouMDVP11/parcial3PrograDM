@@ -1,6 +1,6 @@
 
 // login Usuario y Contraseña
-var loginData = ['su_Nombre', 'carnet'];
+var loginData = ['Lourdes Del Valle', '202008019'];
 
 // clase de lugares
 class Place {

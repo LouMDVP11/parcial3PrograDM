@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../services/data.dart'; 
+import '../widgets.dart';
 
 int _selectedIndex = 0;
 
@@ -65,12 +67,20 @@ class PlacesPage extends ConsumerWidget {
         const SizedBox(
           height: 25,
         ),
-        const Expanded(
+        Expanded(
           child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 32.0),
-              child: Center(
-                child: Text('Aqui va el grid con los lugares'),
-              )),
+            padding: const EdgeInsets.symmetric(horizontal: 32.0),
+            child: GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2, 
+              ),
+              itemCount: places.length,
+              itemBuilder: (context, index) {
+                final place = places[index];
+                return PlacesCard(image: place.image, title: place.title, description: place.description, visited: place.visited); // Utiliza PlacesCard
+              },
+            ),
+          ),
         ),
       ],
     );
@@ -96,14 +106,23 @@ class VisitsPage extends ConsumerWidget {
         const SizedBox(
           height: 30,
         ),
-        const Expanded(
+        Expanded(
           child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 32),
-              child: Center(
-                child: Text('Aqui va la lista con lugares ya visitados'),
-              )),
+            padding: const EdgeInsets.symmetric(horizontal: 32.0),
+            child: GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2, 
+              ),
+              itemCount: places.length,
+              itemBuilder: (context, index) {
+                final place = places[index];
+                return VisitedCard(image: place.image, title: place.title); // Utiliza PlacesCard
+              },
+            ),
+          ),
         ),
       ],
     );
   }
 }
+

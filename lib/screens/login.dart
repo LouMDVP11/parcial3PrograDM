@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:parcial3/screens/home.dart';
+import '../services/data.dart'; 
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -15,8 +16,8 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     var insertedEmail="";
     var insertedPassword="";
-    var correctEmail="correo@test.com";
-    var correctPassword="ABC123";
+    var correctEmail=loginData[0];
+    var correctPassword=loginData[1];
     TextEditingController _passwordController = TextEditingController();
     TextEditingController _emailController = TextEditingController();
     return Scaffold(
